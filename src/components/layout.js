@@ -1,55 +1,49 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import Styled, { createGlobalStyle } from 'styled-components'
 
-import Header from "./header"
-import "./layout.css"
+import Navbar from './navbar'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
+    return ( 
+      <>
+        <Navbar/>
+        <GlobalStyle/>
+        <main>{ children }</main>  
+      </>
+    )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fefefe;
+    font-size: 16px;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: 'Roboto';
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+`
 
 export default Layout
