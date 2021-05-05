@@ -1,12 +1,12 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, meta, title }) {
 
-    return ( <
-        Helmet htmlAttributes = {
+    return ( 
+        <Helmet htmlAttributes = {
             {
-                lang,
+                lang: 'pl',
             }
         }
         title = { title }
